@@ -49,12 +49,9 @@ body {
 /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
 .main-content {
     background: linear-gradient(135deg, #fff8f5 0%, white 50%, white 100%);
-    padding: 32px 0;
+    padding: 16px 0;
 }
 
-.venue-header {
-    margin-bottom: 32px;
-}
 
 .venue-actions {
     display: flex;
@@ -138,10 +135,9 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
-    padding: 16px;
-    background: linear-gradient(135deg, #fff8f5 0%, transparent 100%);
-    border-radius: 8px;
-    border: 1px solid #f4a261;
+    padding: 0;
+    background: none;
+    border: none;
 }
 
 .meta-item {
@@ -174,7 +170,7 @@ body {
 }
 
 .venue-description {
-    margin-top: 24px;
+    margin-top: 0;
 }
 
 .venue-description p {
@@ -282,6 +278,61 @@ body {
     padding: 0;
 }
 
+/* ===== ИНЛАЙН ХАРАКТЕРИСТИКИ ===== */
+.venue-characteristics-inline {
+    margin: 24px 0 8px 0;
+}
+
+.characteristics-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.characteristics-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 16px;
+}
+
+.char-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+.char-badge {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.char-badge.positive {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.char-badge.neutral {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.char-text {
+    font-size: 14px;
+    color: #4b5563;
+    font-weight: 500;
+}
+
 /* ===== КАРТОЧКА БРОНИРОВАНИЯ ===== */
 .venue-sidebar {
     position: sticky;
@@ -291,10 +342,10 @@ body {
 
 .booking-card {
     background: white;
-    border: 1px solid #e5e7eb;
+    border: none;
     border-radius: 12px;
     padding: 24px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .price {
@@ -726,6 +777,14 @@ body {
     
     .venue-image {
         height: 300px;
+    }
+    
+    .characteristics-grid {
+        gap: 8px 12px;
+    }
+    
+    .char-text {
+        font-size: 13px;
     }
     
     .gallery {
