@@ -8,8 +8,8 @@
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
-    color: #1a1a1a;
-    background-color: #f8f9fa;
+    color: #333333;
+    background: linear-gradient(180deg, #fff8f5 0%, #f8f9fa 100%);
 }
 
 .container {
@@ -21,34 +21,34 @@ body {
 /* ===== ХЛЕБНЫЕ КРОШКИ ===== */
 .breadcrumbs {
     background: white;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e1e8ed;
     padding: 16px 0;
     font-size: 14px;
 }
 
 .breadcrumb {
-    color: #6b7280;
+    color: #666666;
     text-decoration: none;
     transition: color 0.2s;
 }
 
 .breadcrumb:hover {
-    color: #1f2937;
+    color: #ff6b35;
 }
 
 .breadcrumb-separator {
     margin: 0 8px;
-    color: #9ca3af;
+    color: #999999;
 }
 
 .breadcrumb-current {
-    color: #1f2937;
+    color: #333333;
     font-weight: 500;
 }
 
 /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
 .main-content {
-    background: white;
+    background: linear-gradient(135deg, #fff8f5 0%, white 50%, white 100%);
     padding: 32px 0;
 }
 
@@ -70,7 +70,7 @@ body {
 .btn-icon {
     width: 40px;
     height: 40px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #e1e8ed;
     border-radius: 8px;
     background: white;
     display: flex;
@@ -79,12 +79,13 @@ body {
     cursor: pointer;
     transition: all 0.2s;
     font-size: 16px;
-    color: #374151;
+    color: #666666;
 }
 
 .btn-icon:hover {
-    background: #f9fafb;
-    border-color: #d1d5db;
+    background: #fff5f2;
+    border-color: #ff6b35;
+    color: #ff6b35;
 }
 
 /* ===== ОСНОВНОЙ МАКЕТ ===== */
@@ -137,6 +138,10 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
+    padding: 16px;
+    background: linear-gradient(135deg, #fff8f5 0%, transparent 100%);
+    border-radius: 8px;
+    border: 1px solid #f4a261;
 }
 
 .meta-item {
@@ -158,6 +163,123 @@ body {
 .capacity {
     color: #6b7280;
     font-size: 14px;
+}
+
+/* ===== ИНФОРМАЦИЯ О ПЛОЩАДКЕ ===== */
+.venue-header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.venue-description {
+    margin-top: 24px;
+}
+
+.venue-description p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666666;
+}
+
+.venue-title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #333333;
+}
+
+.rating {
+    color: #ffa500;
+    font-weight: 600;
+}
+
+.reviews-count {
+    color: #888888;
+    font-size: 14px;
+}
+
+.capacity {
+    color: #888888;
+    font-size: 14px;
+}
+
+.address {
+    color: #888888;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.show-map-btn {
+    background: none;
+    border: none;
+    color: #ff6b35;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.show-map-btn:hover {
+    color: #e55a2b;
+}
+
+/* ===== КОНТАКТЫ В САЙДБАРЕ ===== */
+.sidebar-contacts {
+    background: white;
+    border: 1px solid #e1e8ed;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 24px;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.1);
+}
+
+.sidebar-contacts h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #f4a261;
+    padding-bottom: 8px;
+}
+
+.sidebar-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.sidebar-contact-item:last-child {
+    border-bottom: none;
+}
+
+.sidebar-contact-item .contact-icon {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+    color: #ff6b35;
+    margin-top: 2px;
+}
+
+.sidebar-contact-item .contact-text {
+    flex: 1;
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.sidebar-contact-item .show-phone {
+    background: none;
+    border: none;
+    color: #ff6b35;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: underline;
+    padding: 0;
 }
 
 /* ===== КАРТОЧКА БРОНИРОВАНИЯ ===== */
@@ -182,7 +304,7 @@ body {
 
 .price-from {
     font-size: 14px;
-    color: #6b7280;
+    color: #888888;
     display: block;
     margin-bottom: 4px;
 }
@@ -190,14 +312,14 @@ body {
 .price-amount {
     font-size: 36px;
     font-weight: 700;
-    color: #1a1a1a;
+    color: #ff6b35;
     display: block;
     line-height: 1;
 }
 
 .price-per {
     font-size: 14px;
-    color: #6b7280;
+    color: #888888;
     display: block;
     margin-top: 4px;
 }
@@ -225,40 +347,55 @@ body {
 }
 
 .btn-primary {
-    background: #3b82f6;
+    background: #ff6b35;
     color: white;
 }
 
 .btn-primary:hover {
-    background: #2563eb;
+    background: #e55a2b;
 }
 
 .btn-secondary {
     background: white;
-    color: #3b82f6;
-    border: 1px solid #3b82f6;
+    color: #ff6b35;
+    border: 1px solid #ff6b35;
 }
 
 .btn-secondary:hover {
-    background: #eff6ff;
+    background: #fff5f2;
 }
 
 /* ===== СЕКЦИИ ===== */
 .section {
     background: white;
     padding: 40px 0;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid #f4a261;
+    position: relative;
+}
+
+.section:nth-child(even) {
+    background: linear-gradient(180deg, #fff8f5 0%, white 100%);
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f4a261 0%, #ff6b35 50%, #e55a2b 100%);
 }
 
 .section-title {
     font-size: 24px;
     font-weight: 600;
-    color: #1a1a1a;
+    color: #333333;
     margin-bottom: 24px;
 }
 
 .count {
-    color: #6b7280;
+    color: #888888;
     font-weight: 400;
 }
 
@@ -288,7 +425,7 @@ body {
 }
 
 .gallery-more {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #f4a261 0%, #ff6b35 50%, #e55a2b 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -369,18 +506,18 @@ body {
     font-size: 20px;
     width: 24px;
     text-align: center;
-    color: #6b7280;
+    color: #ff6b35;
 }
 
 .contact-text {
     flex: 1;
-    color: #374151;
+    color: #333333;
 }
 
 .show-phone {
     background: none;
     border: none;
-    color: #3b82f6;
+    color: #ff6b35;
     cursor: pointer;
     font-size: 14px;
     text-decoration: underline;
@@ -391,16 +528,44 @@ body {
     margin-bottom: 32px;
 }
 
-.map-placeholder {
+.map-image {
+    position: relative;
     height: 300px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.map-image:hover {
+    transform: scale(1.02);
+}
+
+.map-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(244, 162, 97, 0.8) 0%, rgba(255, 107, 53, 0.8) 30%, rgba(229, 90, 43, 0.8) 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white;
     text-align: center;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+}
+
+.map-image:hover .map-overlay {
+    opacity: 0.95;
 }
 
 .map-marker {
