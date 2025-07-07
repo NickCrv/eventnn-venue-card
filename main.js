@@ -4,6 +4,15 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeDropdowns();
     initializeMobileMenu();
     initializeSearchForm();
+    
+    // Инициализируем счетчики после небольшой задержки
+    setTimeout(initializeStatsCounters, 500);
+    
+    // Инициализируем активность
+    initializeActivityFeed();
+    
+    // Инициализируем новостную ленту
+    initializeNewsScroll();
 });
 
 // Инициализация вкладок поиска
@@ -86,7 +95,8 @@ function initializeMobileMenu() {
 // Инициализация формы поиска
 function initializeSearchForm() {
     const searchForm = document.querySelector('.search-form');
-    const searchBtn = document.querySelector('.search-btn');
+    const searchBtn = document.querySelector('.ww-search-button');
+    const filterBtn = document.querySelector('.ww-filter-button');
     
     if (searchForm) {
         searchForm.addEventListener('submit', function(e) {
@@ -99,6 +109,13 @@ function initializeSearchForm() {
         searchBtn.addEventListener('click', function(e) {
             e.preventDefault();
             performMainSearch();
+        });
+    }
+    
+    if (filterBtn) {
+        filterBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showFilterModal();
         });
     }
 }
@@ -370,9 +387,259 @@ animationStyles.textContent = `
         margin-top: 8px;
         margin-left: 16px;
     }
+    
+    @keyframes statsPulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
 `;
 
 document.head.appendChild(animationStyles);
+
+// Инициализация счетчиков статистики
+function initializeStatsCounters() {
+    const statsItems = document.querySelectorAll('.stat-item[data-count]');
+    
+    if (statsItems.length === 0) {
+        return;
+    }
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '50px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    statsItems.forEach(item => {
+        observer.observe(item);
+    });
+}
+
+// Анимация счетчика
+function animateCounter(element) {
+    // Проверяем, не запущена ли уже анимация
+    if (element.dataset.animated === 'true') {
+        return;
+    }
+    
+    const target = parseFloat(element.dataset.count);
+    const numberElement = element.querySelector('.stat-number');
+    
+    if (!numberElement) {
+        return;
+    }
+    
+    // Помечаем элемент как анимируемый
+    element.dataset.animated = 'true';
+    
+    const duration = 2000; // 2 секунды
+    const startTime = performance.now();
+    
+    // Определяем формат (процент, рейтинг или число с плюсом)
+    const isPercentage = numberElement.textContent.includes('%');
+    const isPlus = numberElement.textContent.includes('+');
+    const isRating = target < 10 && target > 1; // рейтинг от 1 до 10
+    
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Эффект ease-out
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = target * easeOut;
+        
+        if (isRating) {
+            numberElement.textContent = current.toFixed(1);
+        } else if (isPercentage) {
+            numberElement.textContent = Math.round(current) + '%';
+        } else if (isPlus) {
+            numberElement.textContent = Math.round(current) + '+';
+        } else {
+            numberElement.textContent = Math.round(current);
+        }
+        
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        }
+    }
+    
+    // Добавляем pulse эффект
+    element.style.animation = 'statsPulse 0.6s ease-out';
+    
+    requestAnimationFrame(updateCounter);
+}
+
+// Показ модального окна фильтров
+function showFilterModal() {
+    // Анимация кнопки
+    const filterBtn = document.querySelector('.ww-filter-button');
+    if (filterBtn) {
+        filterBtn.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            filterBtn.style.transform = 'scale(1)';
+        }, 150);
+    }
+    
+    // Пока показываем уведомление
+    showNotification('Расширенные фильтры скоро будут добавлены', 'info');
+}
+
+// Инициализация ленты активности
+function initializeActivityFeed() {
+    // Обновляем счетчик просмотров
+    updateLiveViewers();
+    setInterval(updateLiveViewers, 15000); // каждые 15 секунд
+    
+    // Обновляем время в активности
+    updateActivityTimes();
+    setInterval(updateActivityTimes, 60000); // каждую минуту
+    
+    // Добавляем анимацию появления для элементов активности
+    const activityItems = document.querySelectorAll('.activity-item');
+    activityItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            item.style.transition = 'all 0.5s ease';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        }, index * 150);
+    });
+}
+
+// Обновление счетчика просмотров
+function updateLiveViewers() {
+    const viewersElement = document.getElementById('live-viewers');
+    if (viewersElement) {
+        const currentCount = parseInt(viewersElement.textContent);
+        const variation = Math.floor(Math.random() * 10) - 5; // ±5
+        const newCount = Math.max(30, Math.min(80, currentCount + variation));
+        viewersElement.textContent = newCount;
+    }
+}
+
+// Обновление времени активности
+function updateActivityTimes() {
+    const timeElements = document.querySelectorAll('.activity-time');
+    timeElements.forEach(element => {
+        const currentText = element.textContent;
+        const match = currentText.match(/(\d+)/);
+        if (match) {
+            const minutes = parseInt(match[1]) + 1;
+            element.textContent = `${minutes} минут${minutes === 1 ? 'у' : minutes < 5 ? 'ы' : ''} назад`;
+        }
+    });
+}
+
+// Инициализация новостной ленты
+function initializeNewsScroll() {
+    const newsScroll = document.querySelector('.news-scroll');
+    const prevBtn = document.querySelector('.news-prev');
+    const nextBtn = document.querySelector('.news-next');
+    
+    if (!newsScroll || !prevBtn || !nextBtn) return;
+    
+    const cardWidth = 300 + 24; // ширина карточки + gap
+    let currentPosition = 0;
+    
+    // Обработчики кнопок
+    prevBtn.addEventListener('click', () => {
+        if (currentPosition > 0) {
+            currentPosition--;
+            updateScroll();
+        }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        const maxPosition = Math.max(0, newsScroll.children.length - getVisibleCards());
+        if (currentPosition < maxPosition) {
+            currentPosition++;
+            updateScroll();
+        }
+    });
+    
+    // Обновление прокрутки
+    function updateScroll() {
+        const scrollLeft = currentPosition * cardWidth;
+        newsScroll.scrollTo({
+            left: scrollLeft,
+            behavior: 'smooth'
+        });
+        updateButtons();
+    }
+    
+    // Обновление состояния кнопок
+    function updateButtons() {
+        const maxPosition = Math.max(0, newsScroll.children.length - getVisibleCards());
+        prevBtn.disabled = currentPosition === 0;
+        nextBtn.disabled = currentPosition >= maxPosition;
+    }
+    
+    // Получение количества видимых карточек
+    function getVisibleCards() {
+        const containerWidth = newsScroll.parentElement.offsetWidth;
+        return Math.floor(containerWidth / cardWidth);
+    }
+    
+    // Поддержка прокрутки мышью/тачем
+    newsScroll.addEventListener('scroll', () => {
+        currentPosition = Math.round(newsScroll.scrollLeft / cardWidth);
+        updateButtons();
+    });
+    
+    // Обработка изменения размера окна
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            currentPosition = Math.min(currentPosition, Math.max(0, newsScroll.children.length - getVisibleCards()));
+            updateScroll();
+        }, 250);
+    });
+    
+    // Анимация появления карточек
+    const newsCards = document.querySelectorAll('.news-card');
+    newsCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+    
+    // Добавляем клики по карточкам
+    newsCards.forEach(card => {
+        card.addEventListener('click', () => {
+            card.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                card.style.transform = '';
+                showNotification('Статья скоро будет доступна для чтения', 'info');
+            }, 150);
+        });
+    });
+    
+    // Инициализация
+    updateButtons();
+}
 
 // Инициализация анимаций при загрузке
 window.addEventListener('load', initializeScrollAnimations);
