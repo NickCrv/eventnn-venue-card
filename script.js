@@ -91,6 +91,36 @@ function initializeEventListeners() {
         });
     }
 
+    // Show on map button
+    const showMapBtn = document.querySelector('.show-map-btn');
+    if (showMapBtn) {
+        showMapBtn.addEventListener('click', function() {
+            // Прокрутка к карте
+            const mapSection = document.querySelector('.map-container');
+            if (mapSection) {
+                mapSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                showNotification('Карта открыта!');
+            }
+        });
+    }
+
+    // Map click handler
+    const mapImage = document.querySelector('.map-image');
+    if (mapImage) {
+        mapImage.addEventListener('click', function() {
+            // Открытие карты в Google Maps или Яндекс.Картах
+            const address = 'г. Нижний Новгород, ул. Большая Покровская, 62';
+            const encodedAddress = encodeURIComponent(address);
+            const mapsUrl = `https://yandex.ru/maps/?text=${encodedAddress}`;
+            
+            window.open(mapsUrl, '_blank');
+            showNotification('Открываются Яндекс.Карты...');
+        });
+    }
+
     // Recommendation cards
     const recCards = document.querySelectorAll('.recommendation-card');
     recCards.forEach(card => {

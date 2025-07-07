@@ -291,28 +291,31 @@ body {
 }
 
 .characteristics-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px 16px;
+    align-items: start;
 }
 
 .char-item {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 0;
+    padding: 6px 0;
     background: none;
     border: none;
+    transition: all 0.2s ease;
 }
 
+
 .char-badge {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
     flex-shrink: 0;
 }
@@ -327,10 +330,18 @@ body {
     color: #6b7280;
 }
 
+.char-label {
+    font-size: 14px;
+    color: #374151;
+    font-weight: 600;
+    text-align: right;
+}
+
 .char-text {
     font-size: 14px;
-    color: #4b5563;
+    color: #374151;
     font-weight: 500;
+    line-height: 1.4;
 }
 
 /* ===== КАРТОЧКА БРОНИРОВАНИЯ ===== */
@@ -346,6 +357,10 @@ body {
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.mobile-booking {
+    display: none;
 }
 
 .price {
@@ -419,23 +434,26 @@ body {
 /* ===== СЕКЦИИ ===== */
 .section {
     background: white;
-    padding: 40px 0;
-    border-top: 1px solid #f4a261;
+    padding: 0;
+    margin: 24px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     position: relative;
 }
 
-.section:nth-child(even) {
-    background: linear-gradient(180deg, #fff8f5 0%, white 100%);
+.section .container {
+    padding: 40px 20px;
 }
 
-.section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #f4a261 0%, #ff6b35 50%, #e55a2b 100%);
+.section:nth-child(even) {
+    background: white;
+}
+
+.gallery-section {
+    background: transparent;
+    box-shadow: none;
+    margin: 0;
+    border-radius: 0;
 }
 
 .section-title {
@@ -493,6 +511,89 @@ body {
 }
 
 .gallery-more span:last-child {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* ===== ВИДЕО ГАЛЕРЕЯ ===== */
+.video-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.video-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.video-item:hover {
+    transform: translateY(-2px);
+}
+
+.video-thumbnail {
+    position: relative;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #ff6b35;
+}
+
+.video-duration {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+}
+
+.video-title {
+    display: none;
+}
+
+.video-more {
+    background: linear-gradient(135deg, #f4a261 0%, #ff6b35 50%, #e55a2b 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    min-height: 200px;
+}
+
+.video-more span:first-child {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.video-more span:last-child {
     font-size: 14px;
     opacity: 0.9;
 }
@@ -732,14 +833,23 @@ body {
     
     .venue-sidebar {
         position: static;
-        order: -1;
+        order: 2;
     }
     
-    .booking-card {
+    .venue-main {
+        order: 1;
+    }
+    
+    .mobile-booking {
         display: flex;
         align-items: center;
         gap: 24px;
         padding: 20px;
+        margin-top: 24px;
+    }
+    
+    .venue-sidebar .booking-card {
+        display: none;
     }
     
     .price {
@@ -780,7 +890,13 @@ body {
     }
     
     .characteristics-grid {
-        gap: 8px 12px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px 16px;
+    }
+    
+    .char-item {
+        padding: 10px 12px;
+        grid-template-columns: 20px 100px 1fr;
     }
     
     .char-text {
@@ -788,6 +904,10 @@ body {
     }
     
     .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .video-gallery {
         grid-template-columns: repeat(2, 1fr);
     }
     
@@ -803,8 +923,8 @@ body {
         grid-template-columns: 1fr;
     }
     
-    .section {
-        padding: 32px 0;
+    .section .container {
+        padding: 32px 16px;
     }
     
     .booking-card {
@@ -819,6 +939,10 @@ body {
     
     .booking-actions {
         flex-direction: column;
+    }
+    
+    .sidebar-contacts {
+        display: none;
     }
 }
 
@@ -835,7 +959,22 @@ body {
         height: 240px;
     }
     
+    .characteristics-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .char-item {
+        padding: 8px 12px;
+        grid-template-columns: 20px 90px 1fr;
+        gap: 8px;
+    }
+    
     .gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .video-gallery {
         grid-template-columns: 1fr;
     }
     
