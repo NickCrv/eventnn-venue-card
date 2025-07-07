@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Банкетные залы Нижнего Новгорода - eventnn.ru</title>
+    <link rel="stylesheet" href="style.css?v=124">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="breadcrumbs">
+        <div class="container">
+            <a href="index.html" class="breadcrumb">Главная</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="index.html" class="breadcrumb">Каталог</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Банкетные залы</span>
+        </div>
+    </nav>
+
+    <!-- Заголовок каталога -->
+    <header class="catalog-header">
+        <div class="container">
+            <h1 class="catalog-title">Банкетные залы в Нижнем Новгороде</h1>
+            <p class="catalog-subtitle">Лучшие площадки для проведения свадеб, юбилеев и корпоративных мероприятий</p>
+            <div class="catalog-stats">
+                <div class="stats-item">
+                    <span class="stats-number">47</span>
+                    <span class="stats-text">площадок</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stats-number">4.6</span>
+                    <span class="stats-text">средний рейтинг</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stats-number">1 250</span>
+                    <span class="stats-text">отзывов</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Фильтры и поиск -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-wrapper">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Поиск по названию или адресу...">
+                    <button class="search-btn">🔍</button>
+                </div>
+                
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label class="filter-label">Вместимость</label>
+                        <select class="filter-select">
+                            <option value="">Любая</option>
+                            <option value="50">До 50 человек</option>
+                            <option value="100">До 100 человек</option>
+                            <option value="150">До 150 человек</option>
+                            <option value="200">До 200 человек</option>
+                            <option value="300">Более 200 человек</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">Цена за человека</label>
+                        <select class="filter-select">
+                            <option value="">Любая</option>
+                            <option value="2000">До 2000 ₽</option>
+                            <option value="3000">До 3000 ₽</option>
+                            <option value="4000">До 4000 ₽</option>
+                            <option value="5000">Более 4000 ₽</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">Район</label>
+                        <select class="filter-select">
+                            <option value="">Любой</option>
+                            <option value="center">Центр</option>
+                            <option value="avtozavodsky">Автозаводский</option>
+                            <option value="kanavinsky">Канавинский</option>
+                            <option value="leninsky">Ленинский</option>
+                            <option value="moskovsky">Московский</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">Особенности</label>
+                        <select class="filter-select">
+                            <option value="">Любые</option>
+                            <option value="parking">Парковка</option>
+                            <option value="alcohol">Свой алкоголь</option>
+                            <option value="catering">Свой кейтеринг</option>
+                            <option value="late">Работа после 23:00</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="filters-actions">
+                    <button class="btn btn-outline filter-reset">Сбросить</button>
+                    <div class="sort-group">
+                        <label class="sort-label">Сортировка:</label>
+                        <select class="sort-select">
+                            <option value="popular">По популярности</option>
+                            <option value="rating">По рейтингу</option>
+                            <option value="price-asc">По цене (по возрастанию)</option>
+                            <option value="price-desc">По цене (по убыванию)</option>
+                            <option value="capacity">По вместимости</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Список площадок -->
+    <main class="venues-catalog">
+        <div class="container">
+            <div class="venues-grid">
+                
+                <!-- Карточка площадки 1 -->
+                <div class="venue-card" data-capacity="150" data-price="2500" data-district="center">
+                    <div class="venue-image">
+                        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=400&h=250&fit=crop&ixlib=rb-4.0.3" alt="Банкетный зал Золотой Феникс">
+                        <div class="venue-badge">Рекомендуем</div>
+                    </div>
+                    <div class="venue-info">
+                        <h3 class="venue-name">Банкетный зал "Золотой Феникс"</h3>
+                        <div class="venue-rating">
+                            <span class="rating-stars">★ 4.8</span>
+                            <span class="rating-count">(127 отзывов)</span>
+                        </div>
+                        <div class="venue-location">📍 Большая Покровская, 62</div>
+                        <div class="venue-capacity">До 150 гостей</div>
+                        <div class="venue-features">
+                            <span class="feature">Парковка</span>
+                            <span class="feature">Свой алкоголь</span>
+                            <span class="feature">После 23:00</span>
+                        </div>
+                        <div class="venue-footer">
+                            <div class="venue-price">
+                                <span class="price-from">от</span>
+                                <span class="price-amount">2 500 ₽</span>
+                                <span class="price-per">за чел</span>
+                            </div>
+                            <a href="venue-detail.html" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка площадки 2 -->
+                <div class="venue-card" data-capacity="120" data-price="2200" data-district="center">
+                    <div class="venue-image">
+                        <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=400&h=250&fit=crop&ixlib=rb-4.0.3" alt="Банкетный зал Империя">
+                    </div>
+                    <div class="venue-info">
+                        <h3 class="venue-name">Банкетный зал "Империя"</h3>
+                        <div class="venue-rating">
+                            <span class="rating-stars">★ 4.6</span>
+                            <span class="rating-count">(89 отзывов)</span>
+                        </div>
+                        <div class="venue-location">📍 Горького, 151</div>
+                        <div class="venue-capacity">До 120 гостей</div>
+                        <div class="venue-features">
+                            <span class="feature">Парковка</span>
+                            <span class="feature">Свой кейтеринг</span>
+                            <span class="feature">Wi-Fi</span>
+                        </div>
+                        <div class="venue-footer">
+                            <div class="venue-price">
+                                <span class="price-from">от</span>
+                                <span class="price-amount">2 200 ₽</span>
+                                <span class="price-per">за чел</span>
+                            </div>
+                            <a href="venue-detail.html" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка площадки 3 -->
+                <div class="venue-card" data-capacity="200" data-price="3500" data-district="leninsky">
+                    <div class="venue-image">
+                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=250&fit=crop&ixlib=rb-4.0.3" alt="Банкетный зал Версаль">
+                        <div class="venue-badge premium">Premium</div>
+                    </div>
+                    <div class="venue-info">
+                        <h3 class="venue-name">Банкетный зал "Версаль"</h3>
+                        <div class="venue-rating">
+                            <span class="rating-stars">★ 4.9</span>
+                            <span class="rating-count">(156 отзывов)</span>
+                        </div>
+                        <div class="venue-location">📍 Ленина, 45</div>
+                        <div class="venue-capacity">До 200 гостей</div>
+                        <div class="venue-features">
+                            <span class="feature">Парковка</span>
+                            <span class="feature">Свой алкоголь</span>
+                            <span class="feature">Кейтеринг</span>
+                        </div>
+                        <div class="venue-footer">
+                            <div class="venue-price">
+                                <span class="price-from">от</span>
+                                <span class="price-amount">3 500 ₽</span>
+                                <span class="price-per">за чел</span>
+                            </div>
+                            <a href="venue-detail.html" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка площадки 4 -->
+                <div class="venue-card" data-capacity="180" data-price="2800" data-district="moskovsky">
+                    <div class="venue-image">
+                        <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&h=250&fit=crop&ixlib=rb-4.0.3" alt="Банкетный зал Гранд Холл">
+                    </div>
+                    <div class="venue-info">
+                        <h3 class="venue-name">Банкетный зал "Гранд Холл"</h3>
+                        <div class="venue-rating">
+                            <span class="rating-stars">★ 4.7</span>
+                            <span class="rating-count">(73 отзыва)</span>
+                        </div>
+                        <div class="venue-location">📍 Московское шоссе, 12</div>
+                        <div class="venue-capacity">До 180 гостей</div>
+                        <div class="venue-features">
+                            <span class="feature">Парковка</span>
+                            <span class="feature">После 23:00</span>
+                            <span class="feature">Танцпол</span>
+                        </div>
+                        <div class="venue-footer">
+                            <div class="venue-price">
+                                <span class="price-from">от</span>
+                                <span class="price-amount">2 800 ₽</span>
+                                <span class="price-per">за чел</span>
+                            </div>
+                            <a href="venue-detail.html" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка площадки 5 -->
+                <div class="venue-card" data-capacity="80" data-price="2000" data-district="kanavinsky">
+                    <div class="venue-image">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=250&fit=crop&ixlib=rb-4.0.3" alt="Банкетный зал Уют">
+                    </div>
+                    <div class="venue-info">
+                        <h3 class="venue-name">Банкетный зал "Уют"</h3>
+                        <div class="venue-rating">
+                            <span class="rating-stars">★ 4.4</span>
+                            <span class="rating-count">(42 отзыва)</span>
+                        </div>
+                        <div class="venue-location">📍 Канавинская, 3а</div>
+                        <div class="venue-capacity">До 80 гостей</div>
+                        <div class="venue-features">
+                            <span class="feature">Парковка</span>
+                            <span class="feature">Свой алкоголь</span>
+                            <span class="feature">Wi-Fi</span>
+                        </div>
+                        <div class="venue-footer">
+                            <div class="venue-price">
+                                <span class="price-from">от</span>
+                                <span class="price-amount">2 000 ₽</span>
+                                <span class="price-per">за чел</span>
+                            </div>
+                            <a href="venue-detail.html" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка площадки 6 -->
+                <div class="venue-card" data-capacity="250" data-price="4200" data-district="avtozavodsky">
+                    <div class="venue-image">
+                        <img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=400&h=250&fit=crop&ixlib=rb-4.0.3" alt="Банкетный зал Аристократ">
+                        <div class="venue-badge premium">Premium</div>
+                    </div>
+                    <div class="venue-info">
+                        <h3 class="venue-name">Банкетный зал "Аристократ"</h3>
+                        <div class="venue-rating">
+                            <span class="rating-stars">★ 4.8</span>
+                            <span class="rating-count">(94 отзыва)</span>
+                        </div>
+                        <div class="venue-location">📍 Южное шоссе, 28</div>
+                        <div class="venue-capacity">До 250 гостей</div>
+                        <div class="venue-features">
+                            <span class="feature">Парковка</span>
+                            <span class="feature">Кейтеринг</span>
+                            <span class="feature">Танцпол</span>
+                        </div>
+                        <div class="venue-footer">
+                            <div class="venue-price">
+                                <span class="price-from">от</span>
+                                <span class="price-amount">4 200 ₽</span>
+                                <span class="price-per">за чел</span>
+                            </div>
+                            <a href="venue-detail.html" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Пагинация -->
+            <div class="pagination">
+                <button class="pagination-btn pagination-prev" disabled>← Предыдущая</button>
+                <div class="pagination-numbers">
+                    <button class="pagination-number active">1</button>
+                    <button class="pagination-number">2</button>
+                    <button class="pagination-number">3</button>
+                    <span class="pagination-dots">...</span>
+                    <button class="pagination-number">8</button>
+                </div>
+                <button class="pagination-btn pagination-next">Следующая →</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Популярные категории -->
+    <section class="categories-section">
+        <div class="container">
+            <h2 class="section-title">Популярные категории</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=300&h=200&fit=crop&ixlib=rb-4.0.3" alt="Свадьбы">
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-title">Свадьбы</h3>
+                        <p class="category-count">28 площадок</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=300&h=200&fit=crop&ixlib=rb-4.0.3" alt="Юбилеи">
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-title">Юбилеи</h3>
+                        <p class="category-count">35 площадок</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=300&h=200&fit=crop&ixlib=rb-4.0.3" alt="Корпоративы">
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-title">Корпоративы</h3>
+                        <p class="category-count">42 площадки</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=300&h=200&fit=crop&ixlib=rb-4.0.3" alt="Детские праздники">
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-title">Детские праздники</h3>
+                        <p class="category-count">18 площадок</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="catalog.js"></script>
+</body>
+</html>
