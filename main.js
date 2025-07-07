@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeDropdowns();
     initializeMobileMenu();
     initializeSearchForm();
+    
+    // Инициализируем счетчики после небольшой задержки
+    setTimeout(initializeStatsCounters, 500);
 });
 
 // Инициализация вкладок поиска
@@ -86,7 +89,8 @@ function initializeMobileMenu() {
 // Инициализация формы поиска
 function initializeSearchForm() {
     const searchForm = document.querySelector('.search-form');
-    const searchBtn = document.querySelector('.search-btn');
+    const searchBtn = document.querySelector('.ww-search-button');
+    const filterBtn = document.querySelector('.ww-filter-button');
     
     if (searchForm) {
         searchForm.addEventListener('submit', function(e) {
@@ -99,6 +103,13 @@ function initializeSearchForm() {
         searchBtn.addEventListener('click', function(e) {
             e.preventDefault();
             performMainSearch();
+        });
+    }
+    
+    if (filterBtn) {
+        filterBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showFilterModal();
         });
     }
 }
@@ -370,9 +381,117 @@ animationStyles.textContent = `
         margin-top: 8px;
         margin-left: 16px;
     }
+    
+    @keyframes statsPulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
 `;
 
 document.head.appendChild(animationStyles);
+
+// Инициализация счетчиков статистики
+function initializeStatsCounters() {
+    const statsItems = document.querySelectorAll('.stat-item[data-count]');
+    
+    if (statsItems.length === 0) {
+        return;
+    }
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '50px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    statsItems.forEach(item => {
+        observer.observe(item);
+    });
+}
+
+// Анимация счетчика
+function animateCounter(element) {
+    // Проверяем, не запущена ли уже анимация
+    if (element.dataset.animated === 'true') {
+        return;
+    }
+    
+    const target = parseFloat(element.dataset.count);
+    const numberElement = element.querySelector('.stat-number');
+    
+    if (!numberElement) {
+        return;
+    }
+    
+    // Помечаем элемент как анимируемый
+    element.dataset.animated = 'true';
+    
+    const duration = 2000; // 2 секунды
+    const startTime = performance.now();
+    
+    // Определяем формат (процент, рейтинг или число с плюсом)
+    const isPercentage = numberElement.textContent.includes('%');
+    const isPlus = numberElement.textContent.includes('+');
+    const isRating = target < 10 && target > 1; // рейтинг от 1 до 10
+    
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Эффект ease-out
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = target * easeOut;
+        
+        if (isRating) {
+            numberElement.textContent = current.toFixed(1);
+        } else if (isPercentage) {
+            numberElement.textContent = Math.round(current) + '%';
+        } else if (isPlus) {
+            numberElement.textContent = Math.round(current) + '+';
+        } else {
+            numberElement.textContent = Math.round(current);
+        }
+        
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        }
+    }
+    
+    // Добавляем pulse эффект
+    element.style.animation = 'statsPulse 0.6s ease-out';
+    
+    requestAnimationFrame(updateCounter);
+}
+
+// Показ модального окна фильтров
+function showFilterModal() {
+    // Анимация кнопки
+    const filterBtn = document.querySelector('.ww-filter-button');
+    if (filterBtn) {
+        filterBtn.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            filterBtn.style.transform = 'scale(1)';
+        }, 150);
+    }
+    
+    // Пока показываем уведомление
+    showNotification('Расширенные фильтры скоро будут добавлены', 'info');
+}
 
 // Инициализация анимаций при загрузке
 window.addEventListener('load', initializeScrollAnimations);

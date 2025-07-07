@@ -37,3 +37,61 @@
 127.0.0.1 - - [03/Jul/2025 17:21:04] "GET /script.js HTTP/1.1" 304 -
 127.0.0.1 - - [03/Jul/2025 17:21:05] code 404, message File not found
 127.0.0.1 - - [03/Jul/2025 17:21:05] "GET /sw.js HTTP/1.1" 404 -
+127.0.0.1 - - [03/Jul/2025 17:49:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 17:49:31] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 17:49:31] "GET /script.js HTTP/1.1" 304 -
+127.0.0.1 - - [03/Jul/2025 17:49:31] code 404, message File not found
+127.0.0.1 - - [03/Jul/2025 17:49:31] "GET /sw.js HTTP/1.1" 404 -
+127.0.0.1 - - [03/Jul/2025 17:53:25] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 17:53:25] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 17:53:25] code 404, message File not found
+127.0.0.1 - - [03/Jul/2025 17:53:25] "GET /sw.js HTTP/1.1" 404 -
+127.0.0.1 - - [03/Jul/2025 17:56:45] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [03/Jul/2025 17:56:45] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 17:56:45] "GET /script.js HTTP/1.1" 304 -
+127.0.0.1 - - [03/Jul/2025 17:56:45] code 404, message File not found
+127.0.0.1 - - [03/Jul/2025 17:56:45] "GET /sw.js HTTP/1.1" 404 -
+127.0.0.1 - - [03/Jul/2025 17:58:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 17:58:19] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 17:58:19] code 404, message File not found
+127.0.0.1 - - [03/Jul/2025 17:58:19] "GET /sw.js HTTP/1.1" 404 -
+127.0.0.1 - - [03/Jul/2025 17:59:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 17:59:27] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 17:59:27] code 404, message File not found
+127.0.0.1 - - [03/Jul/2025 17:59:27] "GET /sw.js HTTP/1.1" 404 -
+127.0.0.1 - - [03/Jul/2025 18:01:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 18:01:23] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 18:01:24] code 404, message File not found
+127.0.0.1 - - [03/Jul/2025 18:01:24] "GET /sw.js HTTP/1.1" 404 -
+127.0.0.1 - - [03/Jul/2025 18:03:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 18:03:27] "GET /script.js HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 18:03:27] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 18:03:28] code 404, message File not found
+127.0.0.1 - - [03/Jul/2025 18:03:28] "GET /sw.js HTTP/1.1" 404 -
+127.0.0.1 - - [03/Jul/2025 18:05:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 18:05:07] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 18:05:07] "GET /script.js HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 18:05:07] code 404, message File not found
+127.0.0.1 - - [03/Jul/2025 18:05:07] "GET /sw.js HTTP/1.1" 404 -
+127.0.0.1 - - [03/Jul/2025 18:08:22] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 18:08:22] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 18:08:22] "GET /script.js HTTP/1.1" 304 -
+127.0.0.1 - - [03/Jul/2025 18:08:22] code 404, message File not found
+127.0.0.1 - - [03/Jul/2025 18:08:22] "GET /sw.js HTTP/1.1" 404 -
+127.0.0.1 - - [03/Jul/2025 18:10:39] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [03/Jul/2025 18:10:39] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 18:10:39] "GET /script.js HTTP/1.1" 304 -
+127.0.0.1 - - [03/Jul/2025 18:10:39] code 404, message File not found
+127.0.0.1 - - [03/Jul/2025 18:10:39] "GET /sw.js HTTP/1.1" 404 -
+127.0.0.1 - - [03/Jul/2025 18:12:58] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 18:12:58] "GET /script.js HTTP/1.1" 304 -
+127.0.0.1 - - [03/Jul/2025 18:12:58] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 18:12:58] code 404, message File not found
+127.0.0.1 - - [03/Jul/2025 18:12:58] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [03/Jul/2025 18:12:58] code 404, message File not found
+127.0.0.1 - - [03/Jul/2025 18:12:58] "GET /sw.js HTTP/1.1" 404 -
+127.0.0.1 - - [03/Jul/2025 18:20:35] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 18:20:35] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2025 18:20:35] "GET /script.js HTTP/1.1" 304 -
+127.0.0.1 - - [03/Jul/2025 18:20:35] code 404, message File not found
+127.0.0.1 - - [03/Jul/2025 18:20:35] "GET /sw.js HTTP/1.1" 404 -
