@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Инициализируем счетчики после небольшой задержки
     setTimeout(initializeStatsCounters, 500);
+    
+    // Инициализируем активность
+    initializeActivityFeed();
 });
 
 // Инициализация вкладок поиска
@@ -491,6 +494,54 @@ function showFilterModal() {
     
     // Пока показываем уведомление
     showNotification('Расширенные фильтры скоро будут добавлены', 'info');
+}
+
+// Инициализация ленты активности
+function initializeActivityFeed() {
+    // Обновляем счетчик просмотров
+    updateLiveViewers();
+    setInterval(updateLiveViewers, 15000); // каждые 15 секунд
+    
+    // Обновляем время в активности
+    updateActivityTimes();
+    setInterval(updateActivityTimes, 60000); // каждую минуту
+    
+    // Добавляем анимацию появления для элементов активности
+    const activityItems = document.querySelectorAll('.activity-item');
+    activityItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            item.style.transition = 'all 0.5s ease';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        }, index * 150);
+    });
+}
+
+// Обновление счетчика просмотров
+function updateLiveViewers() {
+    const viewersElement = document.getElementById('live-viewers');
+    if (viewersElement) {
+        const currentCount = parseInt(viewersElement.textContent);
+        const variation = Math.floor(Math.random() * 10) - 5; // ±5
+        const newCount = Math.max(30, Math.min(80, currentCount + variation));
+        viewersElement.textContent = newCount;
+    }
+}
+
+// Обновление времени активности
+function updateActivityTimes() {
+    const timeElements = document.querySelectorAll('.activity-time');
+    timeElements.forEach(element => {
+        const currentText = element.textContent;
+        const match = currentText.match(/(\d+)/);
+        if (match) {
+            const minutes = parseInt(match[1]) + 1;
+            element.textContent = `${minutes} минут${minutes === 1 ? 'у' : minutes < 5 ? 'ы' : ''} назад`;
+        }
+    });
 }
 
 // Инициализация анимаций при загрузке
