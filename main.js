@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Инициализируем активность
     initializeActivityFeed();
+    
+    // Инициализируем новостную ленту
+    initializeNewsScroll();
 });
 
 // Инициализация вкладок поиска
@@ -542,6 +545,100 @@ function updateActivityTimes() {
             element.textContent = `${minutes} минут${minutes === 1 ? 'у' : minutes < 5 ? 'ы' : ''} назад`;
         }
     });
+}
+
+// Инициализация новостной ленты
+function initializeNewsScroll() {
+    const newsScroll = document.querySelector('.news-scroll');
+    const prevBtn = document.querySelector('.news-prev');
+    const nextBtn = document.querySelector('.news-next');
+    
+    if (!newsScroll || !prevBtn || !nextBtn) return;
+    
+    const cardWidth = 300 + 24; // ширина карточки + gap
+    let currentPosition = 0;
+    
+    // Обработчики кнопок
+    prevBtn.addEventListener('click', () => {
+        if (currentPosition > 0) {
+            currentPosition--;
+            updateScroll();
+        }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        const maxPosition = Math.max(0, newsScroll.children.length - getVisibleCards());
+        if (currentPosition < maxPosition) {
+            currentPosition++;
+            updateScroll();
+        }
+    });
+    
+    // Обновление прокрутки
+    function updateScroll() {
+        const scrollLeft = currentPosition * cardWidth;
+        newsScroll.scrollTo({
+            left: scrollLeft,
+            behavior: 'smooth'
+        });
+        updateButtons();
+    }
+    
+    // Обновление состояния кнопок
+    function updateButtons() {
+        const maxPosition = Math.max(0, newsScroll.children.length - getVisibleCards());
+        prevBtn.disabled = currentPosition === 0;
+        nextBtn.disabled = currentPosition >= maxPosition;
+    }
+    
+    // Получение количества видимых карточек
+    function getVisibleCards() {
+        const containerWidth = newsScroll.parentElement.offsetWidth;
+        return Math.floor(containerWidth / cardWidth);
+    }
+    
+    // Поддержка прокрутки мышью/тачем
+    newsScroll.addEventListener('scroll', () => {
+        currentPosition = Math.round(newsScroll.scrollLeft / cardWidth);
+        updateButtons();
+    });
+    
+    // Обработка изменения размера окна
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            currentPosition = Math.min(currentPosition, Math.max(0, newsScroll.children.length - getVisibleCards()));
+            updateScroll();
+        }, 250);
+    });
+    
+    // Анимация появления карточек
+    const newsCards = document.querySelectorAll('.news-card');
+    newsCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+    
+    // Добавляем клики по карточкам
+    newsCards.forEach(card => {
+        card.addEventListener('click', () => {
+            card.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                card.style.transform = '';
+                showNotification('Статья скоро будет доступна для чтения', 'info');
+            }, 150);
+        });
+    });
+    
+    // Инициализация
+    updateButtons();
 }
 
 // Инициализация анимаций при загрузке
